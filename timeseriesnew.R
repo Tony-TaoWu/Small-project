@@ -1,11 +1,10 @@
-#setwd("F:\\大三下\\时间序列") # 设置路径
 library(quantmod);library(tseries);library(fGarch);library(forecast);library(FinTS)
 library(ggplot2);library(DescTools) # 载包
 
 # 获取数据
-getSymbols("510050.SS",from="2009-03-01",to="2019-02-28")
+getSymbols("",from="2009-03-01",to="2019-02-28")
 # 提取收盘价
-data<-Cl(`510050.SS`)
+data<-Cl(``)
 tail(data) # 查看最后六条数据
 
 # 检查缺失值
@@ -285,8 +284,8 @@ abline(h = seq(from = -5,to = 10,by = 5),lty = 2,col = 'grey')
 
 ##################################  样本外预测
 #  ##   提取样本外的真实数据
-getSymbols("510050.SS",from="2009-03-01",to="2019-04-28")
-data1 <- Cl(`510050.SS`);data1 <- na.omit(data1)
+getSymbols("",from="2009-03-01",to="2019-04-28")
+data1 <- Cl(``);data1 <- na.omit(data1)
 lr.pr <- ts(na.omit(as.vector(diff(log(data1)))))*100
 lr.pr <- lr.pr - mean(log.return) # 去掉均值
 lr.pr1 <- lr.pr
@@ -339,8 +338,8 @@ d.1 <- ifelse(d<0,0,1)
 t <- table(c.1,d.1);t
 
 #  原始数据预测
-getSymbols("510050.SS",from="2009-03-01",to="2019-04-28")
-data2<-Cl(`510050.SS`)
+getSymbols("",from="2009-03-01",to="2019-04-28")
+data2<-Cl(``)
 data0<-ts(data2)
 data0[2434]#原始数据的0时刻值
 mean.pred.real<-ts(data0[2434]*exp(cumsum(mean.pred.out.roll)/100),start = 2434,end = 2454)#收益率变换到原始数据
@@ -370,8 +369,8 @@ table(a.2,b.2)
 
 
 #应用  期权定价
-getSymbols("510050.SS",from="2009-03-01",to="2019-04-28")
-data<-Cl(`510050.SS`)
+getSymbols("",from="2009-03-01",to="2019-04-28")
+data<-Cl(``)
 data0<-ts(data)
 data0[2434]#原始数据的0时刻值
 #欧式看涨期权定价公式
@@ -402,12 +401,9 @@ sd(C-pred.C)
 sd(C-pred.Garch)
 legend("topright",legend = c("市场价","garch模型B-S","传统B-S"),col = c("black","red","blue"),lwd = c(2,2,2))
 
-
-
-
-tail(`510050.SS`)
+tail(``)
 #研究的序列到2019/4/26
-volume<-Vo(`510050.SS`)
+volume<-Vo(``)
 volume[which(volume>4000000000)]
 plot(ts(data),ylim=c(0,4),col="chocolate3",lwd=2,ylab="50ETF")#50ETF
 lines(ts(volume/2000000000),col="blue",lwd=2)#图像变形处理
