@@ -1,6 +1,6 @@
 library(quantmod);library(tseries);library(fGarch);library(forecast);library(FinTS)
 library(ggplot2);library(DescTools) # 载包
-
+ 
 # 获取数据
 getSymbols("",from="2009-03-01",to="2019-02-28")
 # 提取收盘价
