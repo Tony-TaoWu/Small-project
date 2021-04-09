@@ -1,7 +1,7 @@
-libname mylib "C:\Users\35150\Documents\Regression";
+libname mylib "";
 /* import the data */
 proc import out = mylib.regression
-Datafile = "C:\Users\35150\Desktop\data.txt" dbms = dlm
+Datafile = "" dbms = dlm
 replace;
 Getnames = YES;
 run;quit;
@@ -11,7 +11,7 @@ proc contents varnum data=mylib.regression;
    ods select position;
 run;
 /* ods word */
-ods rtf file="C:\Users\35150\Documents\My SAS Files\reg.doc"; 
+ods rtf file=""; 
 ods graphics on;
 /* linear regression */
 proc reg data = mylib.regression alpha = 0.05
@@ -57,7 +57,7 @@ weight Weights;
 run;quit;
 /* import the anova data*/ 
 proc import out = mylib.anova
-Datafile = "C:\Users\35150\Desktop\data2.xls" dbms = excel
+Datafile = "" dbms = excel
 replace;
 Getnames = YES;
 run;quit;
